@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+ assembly="com.greenland.admingate" namespace="com.greenland.admingate">
+  <class name="UserEntity">
+    <id name="Id" column="Id">
+      <generator class="native"/>
+    </id>
+    <property name="Loginname"/>
+    <property name="Loginpwd"/>
+    <property name="Pwdsalt"/>
+    <property name="Isactive"/>
+    <property name="Createtime"/>
+    <property name="Createby"/>
+    <property name="Updatetime"/>
+    <property name="Updateby"/>
+  </class>
+</hibernate-mapping>

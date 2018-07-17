@@ -5,13 +5,9 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 
-namespace com.greenland.gate.Controllers
+namespace com.greenland.admingate.Controllers
 {
-    public class HomeController : BaseController
+    public class AuthController : BaseController
     {
-        public void Index()
-        {
-            
-        }
     }
 }

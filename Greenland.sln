@@ -5,6 +5,20 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "com.greenland.gate", "com.greenland.gate\com.greenland.gate.csproj", "{D0F1D4FE-8A57-4681-98C8-B211502A3C01}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "com.greenland.admingate", "com.greenland.admingate\com.greenland.admingate.csproj", "{D87E45D2-0A9A-48D7-8AA4-4FABE6CFD358}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "com.greenland.dataaccess", "com.greenland.dataaccess\com.greenland.dataaccess.csproj", "{C41687A0-AD6F-4FDA-9D89-55F93C1E1695}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "com.greenland.entity", "com.greenland.entity\com.greenland.entity.csproj", "{D168AE1E-A3B3-4EFA-9ECB-95700D307906}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "com.greenland.model", "com.greenland.model\com.greenland.model.csproj", "{097460A3-DB9A-44E7-922F-E55E5ECA5F8C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "com.greenland.tool", "com.greenland.tool\com.greenland.tool.csproj", "{3E3C6546-81D6-4986-9727-4C04A4F0D209}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "com.greenland.adminservice", "com.greenland.adminservice\com.greenland.adminservice.csproj", "{7E7FA81E-C7C8-4279-8709-178987FCC1B7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "com.greenland.service", "com.greenland.service\com.greenland.service.csproj", "{20F5D779-6A3D-49A0-8CE5-5FC44819A709}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +29,34 @@ Global
 		{D0F1D4FE-8A57-4681-98C8-B211502A3C01}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D0F1D4FE-8A57-4681-98C8-B211502A3C01}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D0F1D4FE-8A57-4681-98C8-B211502A3C01}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D87E45D2-0A9A-48D7-8AA4-4FABE6CFD358}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D87E45D2-0A9A-48D7-8AA4-4FABE6CFD358}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D87E45D2-0A9A-48D7-8AA4-4FABE6CFD358}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D87E45D2-0A9A-48D7-8AA4-4FABE6CFD358}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C41687A0-AD6F-4FDA-9D89-55F93C1E1695}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C41687A0-AD6F-4FDA-9D89-55F93C1E1695}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C41687A0-AD6F-4FDA-9D89-55F93C1E1695}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C41687A0-AD6F-4FDA-9D89-55F93C1E1695}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D168AE1E-A3B3-4EFA-9ECB-95700D307906}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D168AE1E-A3B3-4EFA-9ECB-95700D307906}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D168AE1E-A3B3-4EFA-9ECB-95700D307906}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D168AE1E-A3B3-4EFA-9ECB-95700D307906}.Release|Any CPU.Build.0 = Release|Any CPU
+		{097460A3-DB9A-44E7-922F-E55E5ECA5F8C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{097460A3-DB9A-44E7-922F-E55E5ECA5F8C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{097460A3-DB9A-44E7-922F-E55E5ECA5F8C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{097460A3-DB9A-44E7-922F-E55E5ECA5F8C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3E3C6546-81D6-4986-9727-4C04A4F0D209}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3E3C6546-81D6-4986-9727-4C04A4F0D209}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3E3C6546-81D6-4986-9727-4C04A4F0D209}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3E3C6546-81D6-4986-9727-4C04A4F0D209}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7E7FA81E-C7C8-4279-8709-178987FCC1B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7E7FA81E-C7C8-4279-8709-178987FCC1B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7E7FA81E-C7C8-4279-8709-178987FCC1B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7E7FA81E-C7C8-4279-8709-178987FCC1B7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{20F5D779-6A3D-49A0-8CE5-5FC44819A709}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{20F5D779-6A3D-49A0-8CE5-5FC44819A709}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{20F5D779-6A3D-49A0-8CE5-5FC44819A709}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{20F5D779-6A3D-49A0-8CE5-5FC44819A709}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
