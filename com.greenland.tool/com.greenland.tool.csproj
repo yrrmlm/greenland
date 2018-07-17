@@ -61,7 +61,7 @@
     <Compile Include="DB\ADO\DBConnectConfigure.cs" />
     <Compile Include="DB\ADO\MySqlHelper.cs" />
     <Compile Include="BizException\ParameterNullOrEmptyException.cs" />
-    <Compile Include="DB\NHibernate\HibnernatHelper.cs" />
+    <Compile Include="DB\NHibernate\HibernateHelper.cs" />
     <Compile Include="Extension\StringExtension.cs" />
     <Compile Include="Extension\ObjectExtension.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
