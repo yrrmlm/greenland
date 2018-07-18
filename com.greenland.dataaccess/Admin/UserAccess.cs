@@ -20,6 +20,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data;
 using com.greenland.tool.Extension;
+using MySql.Data.MySqlClient;
+using MySqlHelper = com.greenland.tool.DB.ADO.MySqlHelper;
 
 namespace com.greenland.dataaccess.Admin
 {
@@ -28,6 +30,18 @@ namespace com.greenland.dataaccess.Admin
         public const string TableName = "gl_users";
 
         public const string Columns = " id,loginname,loginpwd,pwdsalt,isactive,createtime,createby,updatetime,updateby ";
+
+        public List<UserEntity> AllUsers()
+        {
+            var sql = string.Format("select {0} from {1} where isdelete = 0", Columns, TableName);
+            var dt = MySqlHelper.ExcuteDT(sql);
+            if(dt != null && dt.Rows.Count > 0)
+            {
+                return ConvertToEntityList(dt);
+            }
+
+            return null;
+        }
 
         protected override UserEntity ConvertToEntity(DataRow dr)
         {

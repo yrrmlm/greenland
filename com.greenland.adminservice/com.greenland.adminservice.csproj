@@ -52,6 +52,24 @@
     <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\com.greenland.dataaccess\com.greenland.dataaccess.csproj">
+      <Project>{C41687A0-AD6F-4FDA-9D89-55F93C1E1695}</Project>
+      <Name>com.greenland.dataaccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\com.greenland.entity\com.greenland.entity.csproj">
+      <Project>{d168ae1e-a3b3-4efa-9ecb-95700d307906}</Project>
+      <Name>com.greenland.entity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\com.greenland.model\com.greenland.model.csproj">
+      <Project>{097460A3-DB9A-44E7-922F-E55E5ECA5F8C}</Project>
+      <Name>com.greenland.model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\com.greenland.tool\com.greenland.tool.csproj">
+      <Project>{3E3C6546-81D6-4986-9727-4C04A4F0D209}</Project>
+      <Name>com.greenland.tool</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
