@@ -27,8 +27,7 @@ namespace com.greenland.admingate.Base
             {
                 actionExecutedContext.Response = new HttpResponseMessage(HttpStatusCode.RequestTimeout);
             }
-            //这里可以根据项目需要返回到客户端特定的状态码。如果找不到相应的异常，统一返回服务端错误500
-            else
+            else //这里可以根据项目需要返回到客户端特定的状态码。如果找不到相应的异常，统一返回服务端错误500
             {
                 actionExecutedContext.Response = new HttpResponseMessage(HttpStatusCode.InternalServerError);
             }

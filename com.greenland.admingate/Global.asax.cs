@@ -13,7 +13,6 @@ namespace com.greenland.admingate
         protected void Application_Start()
         {
             GlobalConfiguration.Configure(WebApiConfig.Register);
-            GlobalConfiguration.Configuration.Filters.Add(new WebApiExceptionFilterAttribute());
         }
 
         protected void Application_End()

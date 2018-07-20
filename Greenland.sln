@@ -19,6 +19,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "com.greenland.adminservice"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "com.greenland.service", "com.greenland.service\com.greenland.service.csproj", "{20F5D779-6A3D-49A0-8CE5-5FC44819A709}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "com.greenland.log", "com.greenland.log\com.greenland.log.csproj", "{DA1ABECB-806C-41F3-804B-277F1B6B04DC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -57,6 +59,10 @@ Global
 		{20F5D779-6A3D-49A0-8CE5-5FC44819A709}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{20F5D779-6A3D-49A0-8CE5-5FC44819A709}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{20F5D779-6A3D-49A0-8CE5-5FC44819A709}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DA1ABECB-806C-41F3-804B-277F1B6B04DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA1ABECB-806C-41F3-804B-277F1B6B04DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA1ABECB-806C-41F3-804B-277F1B6B04DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA1ABECB-806C-41F3-804B-277F1B6B04DC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

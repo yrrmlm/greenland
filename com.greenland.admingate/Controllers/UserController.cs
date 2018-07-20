@@ -14,30 +14,32 @@ using System.Web.Http;
 
 namespace com.greenland.admingate.Controllers
 {
-    public class AccountController : BaseController
+    public class UserController : BaseController
     {
         public UserService userService;
 
-        public AccountController()
+        public UserController()
         {
             userService = new UserService();
         }
 
         [HttpGet]
         [HttpPost]
-        [HttpOptions]
         public HttpResponseMessage Users(UserListReq req)
-        {         
-            try
+        {
+            var users = userService.GetUsers();
+            var vRes = new VResponse<List<VUser>>
             {
-                var users = userService.GetUsers();
-                var vRes = new VResponse<List<VUser>> { data = users.Skip(req.pageSize * (req.pageIndex-1)).Take(req.pageSize).ToList(), pager = new VPage { curPage = req.pageIndex, totalPage = users.Count() } };
-                return WriteResponse(JsonConvert.SerializeObject(vRes));
-            }
-            catch(Exception ex)
-            {
-                return WriteResponse(ex.Message);
-            }
+                data = users.Skip(req.pageSize * (req.pageIndex - 1)).Take(req.pageSize).ToList(),
+                pager = new VPage { curPage = req.pageIndex, totalPage = users.Count() }
+            };
+            return WriteResponse(JsonConvert.SerializeObject(vRes));
+        }
+
+        [HttpPost]
+        public HttpResponseMessage Delete()
+        {
+            return WriteResponse("No implement...");
         }
     }
 }

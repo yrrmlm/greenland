@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AdminModel\PageReq.cs" />
+    <Compile Include="AdminModel\Request\LoginReq.cs" />
     <Compile Include="AdminModel\Request\UserListReq.cs" />
     <Compile Include="AdminModel\VPage.cs" />
     <Compile Include="AdminModel\VResponse.cs" />

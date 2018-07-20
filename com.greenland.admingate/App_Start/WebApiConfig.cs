@@ -1,4 +1,5 @@
-﻿using System;
+﻿using com.greenland.admingate.Base;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
@@ -12,8 +13,9 @@ namespace com.greenland.admingate
         {
             //跨域配置
             config.EnableCors(new EnableCorsAttribute("*", "*", "*"));
+            config.Filters.Add(new AuthFilterAttribute());
+            config.Filters.Add(new WebApiExceptionFilterAttribute());
             config.MapHttpAttributeRoutes();
-
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
                 routeTemplate: "api/v1/{controller}/{action}/{id}",
