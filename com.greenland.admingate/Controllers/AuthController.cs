@@ -1,4 +1,5 @@
-﻿using com.greenland.model.AdminModel.Request;
+﻿using com.greenland.model.AdminModel;
+using com.greenland.model.AdminModel.Request;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,7 +17,7 @@ namespace com.greenland.admingate.Controllers
     {
         public HttpResponseMessage Login(LoginReq req)
         {
-            return WriteResponse("No implement...");
+            return WriteResponse(new VResponse());
         }
     }
 }

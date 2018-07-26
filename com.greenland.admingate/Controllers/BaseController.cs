@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -10,10 +11,10 @@ namespace com.greenland.admingate.Controllers
 {
     public class BaseController : ApiController
     {
-        protected HttpResponseMessage WriteResponse(string content, HttpStatusCode statusCode = HttpStatusCode.OK)
+        protected HttpResponseMessage WriteResponse<T>(T t, HttpStatusCode statusCode = HttpStatusCode.OK) where T : new()
         {
             var response = new HttpResponseMessage(statusCode);
-            response.Content = new StringContent(content, Encoding.UTF8);
+            response.Content = new StringContent(JsonConvert.SerializeObject(t), Encoding.UTF8);
             return response;
         }
     }

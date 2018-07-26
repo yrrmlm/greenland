@@ -17,22 +17,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace com.greenland.model.AdminModel.Response
+namespace com.greenland.model.AdminModel.Response.User
 {
-    public class VUser
+    public class VUserListRep : PageRep
     {
-        public int id { get; set; }
-
-        public string loginName { get; set; }
-
-        public int isActive { get; set; }
-
-        public string createTime { get; set; }
-
-        public string createBy { get; set; }
-
-        public string updateTime { get; set; }
-
-        public string updateBy { get; set; }
+        public List<VUserRep> userList { get; set; }
     }
 }

@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{097460A3-DB9A-44E7-922F-E55E5ECA5F8C}</ProjectGuid>
+    <ProjectGuid>{AAB7AEF8-DE99-4EA2-B7C0-96C08329F27C}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>com.greenland.model</RootNamespace>
-    <AssemblyName>com.greenland.model</AssemblyName>
+    <RootNamespace>com.greenland.enums</RootNamespace>
+    <AssemblyName>com.greenland.enums</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
@@ -31,10 +31,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="MySql.Data, Version=6.9.12.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
-      <HintPath>..\packages\MySql.Data.6.9.12\lib\net45\MySql.Data.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -45,30 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AdminModel\PageRep.cs" />
-    <Compile Include="AdminModel\PageReq.cs" />
-    <Compile Include="AdminModel\Request\LoginReq.cs" />
-    <Compile Include="AdminModel\Request\User\UserListReq.cs" />
-    <Compile Include="AdminModel\Request\User\UserRemoveReq.cs" />
-    <Compile Include="AdminModel\Response\User\VUserRep.cs" />
-    <Compile Include="AdminModel\VResponse.cs" />
-    <Compile Include="AdminModel\Response\User\VUserListRep.cs" />
-    <Compile Include="Class1.cs" />
+    <Compile Include="Common\RspCodeEnum.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="app.config" />
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\com.greenland.enums\com.greenland.enums.csproj">
-      <Project>{AAB7AEF8-DE99-4EA2-B7C0-96C08329F27C}</Project>
-      <Name>com.greenland.enums</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\com.greenland.tool\com.greenland.tool.csproj">
-      <Project>{3E3C6546-81D6-4986-9727-4C04A4F0D209}</Project>
-      <Name>com.greenland.tool</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

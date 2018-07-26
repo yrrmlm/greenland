@@ -17,9 +17,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace com.greenland.model.AdminModel.Request
+namespace com.greenland.model.AdminModel.Request.User
 {
     public class UserListReq : PageReq
     {
+        public string searchWord { get; set; }
     }
 }

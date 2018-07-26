@@ -22,6 +22,7 @@ using System.Data;
 using com.greenland.tool.Extension;
 using MySql.Data.MySqlClient;
 using MySqlHelper = com.greenland.tool.DB.ADO.MySqlHelper;
+using com.greenland.model.AdminModel.Request.User;
 
 namespace com.greenland.dataaccess.Admin
 {
@@ -31,16 +32,45 @@ namespace com.greenland.dataaccess.Admin
 
         public const string Columns = " id,loginname,loginpwd,pwdsalt,isactive,createtime,createby,updatetime,updateby ";
 
-        public List<UserEntity> AllUsers()
+        /// <summary>
+        /// 获取所有用户
+        /// </summary>
+        /// <returns></returns>
+        public List<UserEntity> AllUsers(UserListReq request,out int totalCount)
         {
+            totalCount = 0;
             var sql = string.Format("select {0} from {1} where isdelete = 0", Columns, TableName);
-            var dt = MySqlHelper.ExcuteDT(sql);
-            if(dt != null && dt.Rows.Count > 0)
+            var parameters = new List<MySqlParameter>();
+            if(!string.IsNullOrWhiteSpace(request.searchWord))
             {
-                return ConvertToEntityList(dt);
+                sql += string.Format(" and loginname LIKE CONCAT('%',@loginname,'%')");
+                parameters.Add(new MySqlParameter("@loginname", request.searchWord));
+            }
+
+
+            sql += string.Format(" limit {0},{1};", (request.pageIndex - 1) * request.pageSize, request.pageSize);
+
+            sql += string.Format("select count(1) from  {0} where isdelete = 0", TableName);
+            var ds = MySqlHelper.ExcuteDS(sql,parameters);
+            if(ds != null && ds.Tables != null && ds.Tables.Count > 0 )
+            {
+                totalCount = ds.Tables[1].Rows[0][0].ToInt();
+                return ConvertToEntityList(ds.Tables[0]);
             }
 
             return null;
+        }
+
+        /// <summary>
+        /// 删除用户
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <returns></returns>
+        public bool RemoveUsers(int userId)
+        {
+            var sql = string.Format("update {0} set isdelete = 1 where id = @id", TableName);
+            var parameters = new List<MySqlParameter> { new MySqlParameter("@id", userId) };
+            return MySqlHelper.ExcuteNonQuery(sql, parameters);
         }
 
         protected override UserEntity ConvertToEntity(DataRow dr)

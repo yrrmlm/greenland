@@ -1,9 +1,15 @@
 ﻿
-
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using com.greenland.dataaccess.Admin;
 using com.greenland.model.AdminModel;
 using com.greenland.model.AdminModel.Response;
+using com.greenland.model.AdminModel.Response.User;
 using com.greenland.tool.Settings;
+using com.greenland.model.AdminModel.Request.User;
 /**
 * 命名空间: com.greenland.adminservice.User
 *
@@ -16,11 +22,6 @@ using com.greenland.tool.Settings;
 *
 * Copyright (c) 2018 Lir Corporation. All rights reserved.
 */
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace com.greenland.adminservice.User
 {
@@ -32,15 +33,16 @@ namespace com.greenland.adminservice.User
         /// 获取所有用户
         /// </summary>
         /// <returns></returns>
-        public List<VUser> GetUsers()
+        public List<VUserRep> GetUsers(UserListReq req,out int totalCount)
         {
-            var vUsers = new List<VUser>();
+            totalCount = 0;
+            var vUsers = new List<VUserRep>();
             try
             {
-                var users = _userAccess.AllUsers();
+                var users = _userAccess.AllUsers(req, out totalCount);
                 if (users != null)
                 {
-                    users.ForEach(p => vUsers.Add(new VUser
+                    users.ForEach(p => vUsers.Add(new VUserRep
                     {
                         id = p.Id,
                         loginName = p.Loginname,
@@ -57,6 +59,26 @@ namespace com.greenland.adminservice.User
 
             }
             return vUsers;
+        }
+
+        /// <summary>
+        /// 删除用户
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <returns></returns>
+        public bool RemoveUser(int userId)
+        {
+            var res = true;
+            try
+            {
+                if (userId > 0)
+                    res = _userAccess.RemoveUsers(userId);
+            }
+            catch(Exception ex)
+            {
+                res = false;
+            }
+            return res;
         }
     }
 }

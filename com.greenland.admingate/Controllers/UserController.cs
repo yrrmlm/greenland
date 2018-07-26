@@ -1,14 +1,11 @@
 ﻿using com.greenland.adminservice.User;
+using com.greenland.enums.Common;
 using com.greenland.model.AdminModel;
-using com.greenland.model.AdminModel.Request;
-using com.greenland.model.AdminModel.Response;
-using com.greenland.tool.DB;
-using MySql.Data.MySqlClient;
+using com.greenland.model.AdminModel.Request.User;
+using com.greenland.model.AdminModel.Response.User;
+using com.greenland.tool.Extension;
 using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 
@@ -23,23 +20,40 @@ namespace com.greenland.admingate.Controllers
             userService = new UserService();
         }
 
-        [HttpGet]
         [HttpPost]
-        public HttpResponseMessage Users(UserListReq req)
+        [ActionName("remove")]
+        public HttpResponseMessage Remove(UserRemoveReq req)
         {
-            var users = userService.GetUsers();
-            var vRes = new VResponse<List<VUser>>
+            var result = userService.RemoveUser(req.userId);
+            var vRes = new VResponse
             {
-                data = users.Skip(req.pageSize * (req.pageIndex - 1)).Take(req.pageSize).ToList(),
-                pager = new VPage { curPage = req.pageIndex, totalPage = users.Count() }
+                body = result
             };
-            return WriteResponse(JsonConvert.SerializeObject(vRes));
+
+            return WriteResponse(vRes);
         }
 
         [HttpPost]
-        public HttpResponseMessage Delete()
+        [ActionName("users")]
+        public HttpResponseMessage Users(UserListReq req)
         {
-            return WriteResponse("No implement...");
+            var totalCount = 0;
+            var users = userService.GetUsers(req,out totalCount);
+            var vRes = new VResponse
+            {
+                header = new VHeader
+                {
+                    rspCode = (int)RspCodeEnum.RspCode_0000,
+                    rspDesc = RspCodeEnum.RspCode_0000.GetEnumDesc()
+                },
+                body = new VUserListRep
+                {
+                    userList = users.Skip(req.pageSize * (req.pageIndex - 1)).Take(req.pageSize).ToList(),
+                    curPage = req.pageIndex,
+                    totalPage = totalCount/req.pageSize == 0 ? 1: totalCount / req.pageSize
+                }
+            };
+            return WriteResponse(vRes);
         }
     }
 }

@@ -127,6 +127,10 @@
       <Project>{7E7FA81E-C7C8-4279-8709-178987FCC1B7}</Project>
       <Name>com.greenland.adminservice</Name>
     </ProjectReference>
+    <ProjectReference Include="..\com.greenland.enums\com.greenland.enums.csproj">
+      <Project>{aab7aef8-de99-4ea2-b7c0-96c08329f27c}</Project>
+      <Name>com.greenland.enums</Name>
+    </ProjectReference>
     <ProjectReference Include="..\com.greenland.model\com.greenland.model.csproj">
       <Project>{097460a3-db9a-44e7-922f-e55e5eca5f8c}</Project>
       <Name>com.greenland.model</Name>

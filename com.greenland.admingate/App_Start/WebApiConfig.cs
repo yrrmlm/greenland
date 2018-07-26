@@ -17,7 +17,7 @@ namespace com.greenland.admingate
             config.Filters.Add(new WebApiExceptionFilterAttribute());
             config.MapHttpAttributeRoutes();
             config.Routes.MapHttpRoute(
-                name: "DefaultApi",
+                name: "v1_Api",
                 routeTemplate: "api/v1/{controller}/{action}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
