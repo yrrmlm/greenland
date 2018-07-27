@@ -22,10 +22,20 @@ namespace com.greenland.enums.Common
 {
     public enum RspCodeEnum
     {
+        #region 通用型返回码(0~999)
+
         [Description("请求成功")]
         RspCode_0000 = 0,
 
         [Description("请求失败")]
-        RspCode_0001 = 1
+        RspCode_0001 = 1,
+
+        #endregion
+
+        #region 后台业务型返回码(1000~5000)
+        [Description("登录失败，请检查用户名密码")]
+        RspCode_1000 = 1000
+        #endregion
+
     }
 }

@@ -34,6 +34,10 @@ namespace com.greenland.model.AdminModel
 
     public class VHeader
     {
+        public string _rspDesc;
+
+        public int _rspCode;
+
         public VHeader()
         {
             rspCode = (int)RspCodeEnum.RspCode_0000;
@@ -42,6 +46,20 @@ namespace com.greenland.model.AdminModel
 
         public int rspCode { get; set; }
 
-        public string rspDesc { get; set; }
+        public string rspDesc
+        {
+            get
+            {
+                if (string.IsNullOrWhiteSpace(_rspDesc))
+                {
+                    return ((RspCodeEnum)rspCode).GetEnumDesc();
+                }
+                else
+                {
+                    return _rspDesc;
+                }
+            }
+            set { }
+        }
     }
 }

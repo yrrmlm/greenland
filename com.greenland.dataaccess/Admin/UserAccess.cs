@@ -33,6 +33,30 @@ namespace com.greenland.dataaccess.Admin
         public const string Columns = " id,loginname,loginpwd,pwdsalt,isactive,createtime,createby,updatetime,updateby ";
 
         /// <summary>
+        /// 根据登录用户信息查询用户
+        /// </summary>
+        /// <param name="loginName"></param>
+        /// <param name="loginPwd"></param>
+        /// <returns></returns>
+        public UserEntity GetLoginUser(string loginName,string loginPwd)
+        {
+            var sql = string.Format("select {0} from {1} where loginname = @loginname and loginpwd = @loginpwd and isactive = 1 and isdelete = 0 ", Columns, TableName);
+            var parameters = new List<MySqlParameter>
+            {
+                new MySqlParameter("@loginname",loginName),
+                new MySqlParameter("@loginpwd",loginPwd)
+            };
+
+            var dt = MySqlHelper.ExcuteDT(sql, parameters);
+            if(dt != null && dt.Rows.Count > 0)
+            {
+                return ConvertToEntity(dt.Rows[0]);
+            }
+
+            return null;
+        }
+
+        /// <summary>
         /// 获取所有用户
         /// </summary>
         /// <param name="request"></param>
