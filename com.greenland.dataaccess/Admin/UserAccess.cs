@@ -35,11 +35,13 @@ namespace com.greenland.dataaccess.Admin
         /// <summary>
         /// 获取所有用户
         /// </summary>
+        /// <param name="request"></param>
+        /// <param name="totalCount"></param>
         /// <returns></returns>
         public List<UserEntity> AllUsers(UserListReq request,out int totalCount)
         {
             totalCount = 0;
-            var sql = string.Format("select {0} from {1} where isdelete = 0", Columns, TableName);
+            var sql = string.Format("select SQL_CALC_FOUND_ROWS {0} from {1} where isdelete = 0", Columns, TableName);
             var parameters = new List<MySqlParameter>();
             if(!string.IsNullOrWhiteSpace(request.searchWord))
             {
@@ -50,7 +52,7 @@ namespace com.greenland.dataaccess.Admin
 
             sql += string.Format(" limit {0},{1};", (request.pageIndex - 1) * request.pageSize, request.pageSize);
 
-            sql += string.Format("select count(1) from  {0} where isdelete = 0", TableName);
+            sql += string.Format("select found_rows();", TableName);
             var ds = MySqlHelper.ExcuteDS(sql,parameters);
             if(ds != null && ds.Tables != null && ds.Tables.Count > 0 )
             {
@@ -66,10 +68,51 @@ namespace com.greenland.dataaccess.Admin
         /// </summary>
         /// <param name="userId"></param>
         /// <returns></returns>
-        public bool RemoveUsers(int userId)
+        public bool RemoveUser(int userId)
         {
             var sql = string.Format("update {0} set isdelete = 1 where id = @id", TableName);
             var parameters = new List<MySqlParameter> { new MySqlParameter("@id", userId) };
+            return MySqlHelper.ExcuteNonQuery(sql, parameters);
+        }
+
+        /// <summary>
+        /// 修改用户
+        /// </summary>
+        /// <param name="user"></param>
+        /// <returns></returns>
+        public bool UpdateUser(UserEntity user)
+        {
+            var sql = string.Format("update {0} set loginname = @loginname,loginpwd = @loginpwd,updateby = @updateby,updatetime = @updatetime where id = @id", TableName);
+            var parameters = new List<MySqlParameter>
+            {
+                new MySqlParameter("@loginname", user.Loginname),
+                new MySqlParameter("@loginpwd", user.Loginpwd),
+                new MySqlParameter("@updateby", user.Updateby ?? string.Empty),
+                new MySqlParameter("@updatetime", DateTime.Now),
+                new MySqlParameter("@id",user.Id)
+            };
+            return MySqlHelper.ExcuteNonQuery(sql, parameters);
+        }
+
+        /// <summary>
+        /// 新增用户
+        /// </summary>
+        /// <param name="user"></param>
+        /// <returns></returns>
+        public bool AddUser(UserEntity user)
+        {
+            var sql = string.Format("insert into {0}(loginname,loginpwd,pwdsalt,isactive,createby,createtime,updateby,updatetime)values(@loginname,@loginpwd,@pwdsalt,@isactive,@createby,@createtime,@updateby,@updatetime)", TableName);
+            var parameters = new List<MySqlParameter>
+            {
+                new MySqlParameter("@loginname", user.Loginname),
+                new MySqlParameter("@loginpwd", user.Loginpwd),
+                new MySqlParameter("@pwdsalt", user.Pwdsalt ?? string.Empty),
+                new MySqlParameter("@isactive", 1),
+                new MySqlParameter("@createby", user.Createby ?? string.Empty),
+                new MySqlParameter("@createtime", DateTime.Now),
+                new MySqlParameter("@updateby", user.Updateby ?? string.Empty),
+                new MySqlParameter("@updatetime", DateTime.Now)
+            };
             return MySqlHelper.ExcuteNonQuery(sql, parameters);
         }
 

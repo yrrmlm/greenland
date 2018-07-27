@@ -20,6 +20,48 @@ namespace com.greenland.admingate.Controllers
             userService = new UserService();
         }
 
+
+        /// <summary>
+        /// 新增用户
+        /// </summary>
+        /// <param name="req"></param>
+        /// <returns></returns>
+        [HttpPost]
+        [ActionName("add")]
+        public HttpResponseMessage Add(UserAddReq req)
+        {
+            var result = userService.AddUser(req);
+            var vRes = new VResponse
+            {
+                body = result
+            };
+
+            return WriteResponse(vRes);
+        }
+
+        /// <summary>
+        /// 编辑用户
+        /// </summary>
+        /// <param name="req"></param>
+        /// <returns></returns>
+        [HttpPost]
+        [ActionName("edit")]
+        public HttpResponseMessage Edit(UserEditReq req)
+        {
+            var result = userService.EditUser(req);
+            var vRes = new VResponse
+            {
+                body = result
+            };
+
+            return WriteResponse(vRes);
+        }
+
+        /// <summary>
+        /// 删除用户
+        /// </summary>
+        /// <param name="req"></param>
+        /// <returns></returns>
         [HttpPost]
         [ActionName("remove")]
         public HttpResponseMessage Remove(UserRemoveReq req)
@@ -33,9 +75,14 @@ namespace com.greenland.admingate.Controllers
             return WriteResponse(vRes);
         }
 
+        /// <summary>
+        /// 获取用户列表
+        /// </summary>
+        /// <param name="req"></param>
+        /// <returns></returns>
         [HttpPost]
-        [ActionName("users")]
-        public HttpResponseMessage Users(UserListReq req)
+        [ActionName("list")]
+        public HttpResponseMessage List(UserListReq req)
         {
             var totalCount = 0;
             var users = userService.GetUsers(req,out totalCount);
@@ -48,9 +95,9 @@ namespace com.greenland.admingate.Controllers
                 },
                 body = new VUserListRep
                 {
-                    userList = users.Skip(req.pageSize * (req.pageIndex - 1)).Take(req.pageSize).ToList(),
+                    userList = users,
                     curPage = req.pageIndex,
-                    totalPage = totalCount/req.pageSize == 0 ? 1: totalCount / req.pageSize
+                    totalPage = totalCount
                 }
             };
             return WriteResponse(vRes);

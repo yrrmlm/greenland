@@ -46,6 +46,7 @@ namespace com.greenland.adminservice.User
                     {
                         id = p.Id,
                         loginName = p.Loginname,
+                        loginPwd = "*********",
                         isActive = p.Isactive,
                         createBy = p.Createby,
                         createTime = p.Createtime.ToString(StringDateFormat.DateFormatDayMinitues),
@@ -72,11 +73,66 @@ namespace com.greenland.adminservice.User
             try
             {
                 if (userId > 0)
-                    res = _userAccess.RemoveUsers(userId);
+                {
+                    res = _userAccess.RemoveUser(userId);
+                }
             }
             catch(Exception ex)
             {
-                res = false;
+                throw ex;
+            }
+            return res;
+        }
+
+        /// <summary>
+        /// 修改用户
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <returns></returns>
+        public bool EditUser(UserEditReq req)
+        {
+            var res = true;
+            try
+            {
+                if (req != null && req.userId > 0)
+                {
+                    res = _userAccess.UpdateUser(new entity.User.UserEntity
+                    {
+                        Id = req.userId,
+                        Loginname = req.loginName,
+                        Loginpwd = req.loginPwd
+                    });
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return res;
+        }
+
+        /// <summary>
+        /// 修改用户
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <returns></returns>
+        public bool AddUser(UserAddReq req)
+        {
+            var res = true;
+            try
+            {
+                if (req != null)
+                {
+                    res = _userAccess.AddUser(new entity.User.UserEntity
+                    {
+                        Loginname = req.loginName,
+                        Loginpwd = req.loginPwd
+                    });
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
             }
             return res;
         }

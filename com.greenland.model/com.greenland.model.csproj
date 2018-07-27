@@ -48,6 +48,8 @@
     <Compile Include="AdminModel\PageRep.cs" />
     <Compile Include="AdminModel\PageReq.cs" />
     <Compile Include="AdminModel\Request\LoginReq.cs" />
+    <Compile Include="AdminModel\Request\User\UserAddReq.cs" />
+    <Compile Include="AdminModel\Request\User\UserEditReq.cs" />
     <Compile Include="AdminModel\Request\User\UserListReq.cs" />
     <Compile Include="AdminModel\Request\User\UserRemoveReq.cs" />
     <Compile Include="AdminModel\Response\User\VUserRep.cs" />

@@ -23,7 +23,7 @@ namespace com.greenland.admingate.Base
             }
             else
             {
-                actionExecutedContext.Response = new HttpResponseMessage(HttpStatusCode.InternalServerError);
+                //actionExecutedContext.Response = new HttpResponseMessage(HttpStatusCode.InternalServerError);
             }
 
             base.OnException(actionExecutedContext);
