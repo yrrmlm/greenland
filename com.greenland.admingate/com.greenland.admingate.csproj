@@ -109,7 +109,6 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Base\AuthFilterAttribute.cs" />
     <Compile Include="Base\WebApiExceptionFilterAttribute.cs" />
-    <Compile Include="Base\GLHttpContent.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\AuthController.cs" />
     <Compile Include="Controllers\BaseController.cs" />

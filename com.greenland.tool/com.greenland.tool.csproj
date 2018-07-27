@@ -62,6 +62,7 @@
     <Compile Include="DB\ADO\MySqlHelper.cs" />
     <Compile Include="BizException\ParameterNullOrEmptyException.cs" />
     <Compile Include="DB\NHibernate\HibernateHelper.cs" />
+    <Compile Include="Encryption\AES\AESHelper.cs" />
     <Compile Include="Extension\StringExtension.cs" />
     <Compile Include="Extension\ObjectExtension.cs" />
     <Compile Include="Http\LMHttpResponseMessage.cs" />
@@ -69,7 +70,6 @@
     <Compile Include="Settings\StringDateFormat.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Encryption\AES\" />
     <Folder Include="Redis\" />
   </ItemGroup>
   <ItemGroup>

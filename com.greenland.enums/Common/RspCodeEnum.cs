@@ -33,8 +33,10 @@ namespace com.greenland.enums.Common
         #endregion
 
         #region 后台业务型返回码(1000~5000)
+
         [Description("登录失败，请检查用户名密码")]
         RspCode_1000 = 1000
+
         #endregion
 
     }

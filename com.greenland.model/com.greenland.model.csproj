@@ -36,6 +36,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -45,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdminModel\BaseReq.cs" />
     <Compile Include="AdminModel\PageRep.cs" />
     <Compile Include="AdminModel\PageReq.cs" />
     <Compile Include="AdminModel\Request\LoginReq.cs" />
@@ -52,6 +54,7 @@
     <Compile Include="AdminModel\Request\User\UserEditReq.cs" />
     <Compile Include="AdminModel\Request\User\UserListReq.cs" />
     <Compile Include="AdminModel\Request\User\UserRemoveReq.cs" />
+    <Compile Include="AdminModel\Response\LoginRep.cs" />
     <Compile Include="AdminModel\Response\User\VUserRep.cs" />
     <Compile Include="AdminModel\VResponse.cs" />
     <Compile Include="AdminModel\Response\User\VUserListRep.cs" />
