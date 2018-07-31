@@ -19,7 +19,7 @@ using System.Threading.Tasks;
 
 namespace com.greenland.model.AdminModel.Request.User
 {
-    public class UserAddReq
+    public class UserAddReq: BaseReq
     {
         public string loginName { get; set; }
 

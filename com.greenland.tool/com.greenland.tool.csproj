@@ -63,14 +63,19 @@
     <Compile Include="BizException\ParameterNullOrEmptyException.cs" />
     <Compile Include="DB\NHibernate\HibernateHelper.cs" />
     <Compile Include="Encryption\AES\AESHelper.cs" />
+    <Compile Include="Encryption\SHA\SHA1Helper.cs" />
     <Compile Include="Extension\StringExtension.cs" />
     <Compile Include="Extension\ObjectExtension.cs" />
     <Compile Include="Http\LMHttpResponseMessage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Redis\RedisBaseClient.cs" />
+    <Compile Include="Redis\RedisHelper.cs" />
+    <Compile Include="Redis\RedisConnectionParameter.cs" />
+    <Compile Include="Redis\RedisCommandEnums.cs" />
     <Compile Include="Settings\StringDateFormat.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Redis\" />
+    <Folder Include="Encryption\MD5\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

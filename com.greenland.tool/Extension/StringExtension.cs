@@ -946,5 +946,15 @@ namespace com.greenland.tool.Extension
 
             return Guid.Empty;
         }
+
+        /// <summary>
+        /// unix时间戳
+        /// </summary>
+        /// <param name="date"></param>
+        /// <returns></returns>
+        public static string ToUnix(this DateTime date)
+        {
+            return ((date.ToUniversalTime().Ticks - 621355968000000000) / 10000000).ToString();
+        }
     }
 }

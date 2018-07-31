@@ -30,6 +30,14 @@ namespace com.greenland.enums.Common
         [Description("请求失败")]
         RspCode_0001 = 1,
 
+        [Description("参数错误")]
+        RspCode_0002 = 2,
+
+        [Description("参数值为空")]
+        RspCode_0003 = 3,
+
+        [Description("授权失效")]
+        RspCode_0004 = 4,
         #endregion
 
         #region 后台业务型返回码(1000~5000)

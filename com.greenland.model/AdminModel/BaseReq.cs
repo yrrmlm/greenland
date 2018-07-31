@@ -21,7 +21,7 @@ namespace com.greenland.model.AdminModel
 {
     public class BaseReq
     {
-        public string loginName { get; set; }
+        public string loginKey { get; set; }
 
         public string sessionCode { get; set; }
     }

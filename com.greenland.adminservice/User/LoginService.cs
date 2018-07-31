@@ -40,7 +40,7 @@ namespace com.greenland.adminservice.User
                 var user = _userAccess.GetLoginUser(req.loginName, req.password);
                 if(user != null)
                 {
-                    vUser = new VUserRep
+                    return new VUserRep
                     {
                         loginName = user.Loginname,
                         loginPwd = user.Loginpwd

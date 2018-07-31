@@ -22,5 +22,7 @@ namespace com.greenland.tool.Settings
     public class StringDateFormat
     {
         public const string DateFormatDayMinitues = "yyyy-MM-dd HH:mm";
+
+        public const string DateFormateString = "yyyyMMddHHmmss";
     }
 }

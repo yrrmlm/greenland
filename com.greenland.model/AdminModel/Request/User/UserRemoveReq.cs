@@ -19,7 +19,7 @@ using System.Threading.Tasks;
 
 namespace com.greenland.model.AdminModel.Request.User
 {
-    public class UserRemoveReq
+    public class UserRemoveReq: BaseReq
     {
         public int userId { get; set; }
     }

@@ -34,9 +34,9 @@ namespace com.greenland.model.AdminModel
 
     public class VHeader
     {
-        public string _rspDesc;
+        private string _rspDesc;
 
-        public int _rspCode;
+        private int _rspCode;
 
         public VHeader()
         {

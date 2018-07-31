@@ -19,7 +19,7 @@ using System.Threading.Tasks;
 
 namespace com.greenland.model.AdminModel
 {
-    public class PageReq
+    public class PageReq: BaseReq
     {
         public PageReq()
         {

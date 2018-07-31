@@ -1,9 +1,12 @@
-﻿using com.greenland.adminservice.User;
+﻿using com.greenland.adminservice.Cache;
+using com.greenland.adminservice.User;
 using com.greenland.enums.Common;
 using com.greenland.model.AdminModel;
 using com.greenland.model.AdminModel.Request;
 using com.greenland.model.AdminModel.Response;
 using com.greenland.tool.Encryption.AES;
+using com.greenland.tool.Extension;
+using com.greenland.tool.Redis;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,16 +31,19 @@ namespace com.greenland.admingate.Controllers
         /// <returns></returns>
         [HttpPost]
         [ActionName("login")]
+        [AllowAnonymous]
         public HttpResponseMessage Login(LoginReq req)
         {
             var vRes = new VResponse();
             var vUser = _loginService.Login(req);
             if(vUser != null)
             {
+                var code = AESHelper.AESEncryptToString(vUser.loginName + vUser.loginPwd + DateTime.Now.ToUnix());
                 vRes = new VResponse
                 {
-                    body = new LoginRep { sessionCode = AESHelper.AesEncrypt(vUser.loginName + vUser.loginPwd) }
+                    body = new LoginRep { sessionCode = code }
                 };
+                CommonCache.SetAuthCache(req.loginName, code);
             }
             else
             {
