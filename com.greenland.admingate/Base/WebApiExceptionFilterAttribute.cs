@@ -1,4 +1,8 @@
-﻿using System;
+﻿using com.greenland.enums.Common;
+using com.greenland.log.Normal;
+using com.greenland.model.AdminModel;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -23,7 +27,21 @@ namespace com.greenland.admingate.Base
             }
             else
             {
-                //actionExecutedContext.Response = new HttpResponseMessage(HttpStatusCode.InternalServerError);
+                actionExecutedContext.Response = new HttpResponseMessage
+                {
+                    Content = new StringContent(JsonConvert.SerializeObject(new VResponse { header = new VHeader { rspCode = (int)RspCodeEnum.RspCode_0005 } }))
+                };
+                LogService.GetLogService().SavaLogAsync(new LogEntity
+                {
+                    LogType = LogTypeEnum.Error,
+                    Function = string.Empty,
+                    RequestInfo = string.Empty,
+                    ResponseInfo = string.Empty,
+                    OtherInfo = actionExecutedContext.Exception.StackTrace,
+                    SearchText1 = "InterfaceError",
+                    RequestIP = string.Empty,
+                    HostIP = string.Empty
+                });
             }
 
             base.OnException(actionExecutedContext);

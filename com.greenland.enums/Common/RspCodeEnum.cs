@@ -24,20 +24,42 @@ namespace com.greenland.enums.Common
     {
         #region 通用型返回码(0~999)
 
+        /// <summary>
+        /// 请求成功
+        /// </summary>
         [Description("请求成功")]
         RspCode_0000 = 0,
 
+        /// <summary>
+        /// 请求失败
+        /// </summary>
         [Description("请求失败")]
         RspCode_0001 = 1,
 
-        [Description("参数错误")]
+        /// <summary>
+        /// 参数无效
+        /// </summary>
+        [Description("参数无效")]
         RspCode_0002 = 2,
 
+        /// <summary>
+        /// 参数值为空
+        /// </summary>
         [Description("参数值为空")]
         RspCode_0003 = 3,
 
+        /// <summary>
+        /// 授权失效
+        /// </summary>
         [Description("授权失效")]
         RspCode_0004 = 4,
+
+        /// <summary>
+        /// 接口异常
+        /// </summary>
+        [Description("接口异常")]
+        RspCode_0005 = 5,
+
         #endregion
 
         #region 后台业务型返回码(1000~5000)

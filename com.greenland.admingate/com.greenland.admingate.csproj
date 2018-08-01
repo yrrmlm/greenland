@@ -130,6 +130,10 @@
       <Project>{aab7aef8-de99-4ea2-b7c0-96c08329f27c}</Project>
       <Name>com.greenland.enums</Name>
     </ProjectReference>
+    <ProjectReference Include="..\com.greenland.log\com.greenland.log.csproj">
+      <Project>{da1abecb-806c-41f3-804b-277f1b6b04dc}</Project>
+      <Name>com.greenland.log</Name>
+    </ProjectReference>
     <ProjectReference Include="..\com.greenland.model\com.greenland.model.csproj">
       <Project>{097460a3-db9a-44e7-922f-e55e5eca5f8c}</Project>
       <Name>com.greenland.model</Name>

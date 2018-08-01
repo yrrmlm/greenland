@@ -58,6 +58,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BizException\BizException.cs" />
     <Compile Include="DB\ADO\DBConnectConfigure.cs" />
     <Compile Include="DB\ADO\MySqlHelper.cs" />
     <Compile Include="BizException\ParameterNullOrEmptyException.cs" />
