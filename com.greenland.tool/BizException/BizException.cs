@@ -23,18 +23,46 @@ namespace com.greenland.tool.BizException
     {
         private Exception exception;
 
+        public string SearchKey { get; set; }
+
+        public string FunctionName { get; set; }
+
+        public string Input { get; set; }
+
+        public string Output { get; set; }
+
+        public int BizRspCode { get; set; }
+
         public BizException()
         {
 
         }
 
-        public BizException(string message) : base(message)
+        public BizException(string searchKey)
         {
+            SearchKey = string.IsNullOrWhiteSpace(searchKey) ? "BizException" : searchKey;
+            FunctionName = "Common";
         }
 
-        public BizException(string message, Exception innerException) : base(message, innerException)
+        public BizException(string searchKey,string functionName)
         {
+            SearchKey = string.IsNullOrWhiteSpace(searchKey) ? "BizException" : searchKey;
+            FunctionName = functionName;
+        }
 
+        public BizException(string searchKey,string functionName,string message, int bizRspCode,string input = "",string output ="") : base(message)
+        {
+            SearchKey = string.IsNullOrWhiteSpace(searchKey) ? "BizException" : searchKey;
+            FunctionName = functionName;
+            BizRspCode = bizRspCode;
+            Input = input;
+            Output = output;
+        }
+
+        public BizException(string message, Exception innerException,string searchKey) : base(message, innerException)
+        {
+            SearchKey = string.IsNullOrWhiteSpace(searchKey) ? "BizException" : searchKey;
+            exception = innerException;
         }
     }
 }

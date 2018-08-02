@@ -60,6 +60,12 @@ namespace com.greenland.enums.Common
         [Description("接口异常")]
         RspCode_0005 = 5,
 
+        /// <summary>
+        /// 业务异常
+        /// </summary>
+        [Description("业务异常")]
+        RspCode_0006 = 6,
+
         #endregion
 
         #region 后台业务型返回码(1000~5000)

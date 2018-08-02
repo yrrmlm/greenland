@@ -1,6 +1,7 @@
 ﻿using com.greenland.enums.Common;
 using com.greenland.log.Normal;
 using com.greenland.model.AdminModel;
+using com.greenland.tool.BizException;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -25,6 +26,23 @@ namespace com.greenland.admingate.Base
             {
                 actionExecutedContext.Response = new HttpResponseMessage(HttpStatusCode.RequestTimeout);
             }
+            else if(actionExecutedContext.Exception is BizException)
+            {
+                var exception = actionExecutedContext.Exception as BizException;
+                actionExecutedContext.Response = new HttpResponseMessage
+                {
+                    Content = new StringContent(JsonConvert.SerializeObject(new VResponse { header = new VHeader { rspCode = exception.BizRspCode } }))
+                };
+                LogService.GetLogService().SavaLogAsync(new LogEntity
+                {
+                    LogType = LogTypeEnum.Error,
+                    Function = exception.FunctionName,
+                    RequestInfo = exception.Input,
+                    ResponseInfo = exception.Output,
+                    OtherInfo = exception.StackTrace,
+                    SearchText1 = exception.SearchKey
+                });
+            }
             else
             {
                 actionExecutedContext.Response = new HttpResponseMessage
@@ -34,13 +52,9 @@ namespace com.greenland.admingate.Base
                 LogService.GetLogService().SavaLogAsync(new LogEntity
                 {
                     LogType = LogTypeEnum.Error,
-                    Function = string.Empty,
-                    RequestInfo = string.Empty,
-                    ResponseInfo = string.Empty,
+                    Function = actionExecutedContext.Exception.Source,
                     OtherInfo = actionExecutedContext.Exception.StackTrace,
-                    SearchText1 = "InterfaceError",
-                    RequestIP = string.Empty,
-                    HostIP = string.Empty
+                    SearchText1 = "InterfaceError"
                 });
             }
 

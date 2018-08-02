@@ -4,9 +4,11 @@ using com.greenland.enums.Common;
 using com.greenland.model.AdminModel;
 using com.greenland.model.AdminModel.Request;
 using com.greenland.model.AdminModel.Response;
+using com.greenland.tool.BizException;
 using com.greenland.tool.Encryption.AES;
 using com.greenland.tool.Extension;
 using com.greenland.tool.Redis;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -46,7 +48,7 @@ namespace com.greenland.admingate.Controllers
                 CommonCache.SetAuthCache(req.loginName, code);
             }
             else
-            {
+            {              
                 vRes = new VResponse
                 {
                     header = new VHeader { rspCode = (int)RspCodeEnum.RspCode_1000 }
